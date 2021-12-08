@@ -8,6 +8,7 @@ import code         # code.interact
 import os           # environment variables
 import inspect      # call stack inspection
 import random
+import argparse
 import os
 from discord.channel import VoiceChannel       # dumb random number generator
 
@@ -197,6 +198,13 @@ if __name__ == '__main__':
         exit(-1)
 
     # launch bot (blocking operation)
-    bot.run(os.environ['BOT_TOKEN'])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--token", help="generate token")
+    args = parser.parse_args()
+    if args.token:
+     TOKEN = args.token
+     bot.run(TOKEN) 
+    else 
+     bot.run(os.environ['BOT_TOKEN'])
     
 
